@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio | Nina Amelia Naziah</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #8b5cf6;
+  --accent-color: #ec4899;
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+  --gray-color: #64748b;
+  --success-color: #10b981;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
+  --transition: all 0.4s ease;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+section {
+  padding: 100px 0;
+}
+
+#about { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
+#skills { background: linear-gradient(135deg, #f8fafc 0%, rgba(99, 102, 241, 0.05) 100%); }
+#portfolio { background: linear-gradient(135deg, #ffffff 0%, rgba(236, 72, 153, 0.04) 100%); }
+#experience { background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%); }
+#education { background: linear-gradient(135deg, #ffffff 0%, rgba(139, 92, 246, 0.05) 100%); }
+#contact { background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%); }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+.section-title p {
+  color: var(--gray-color);
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+/* Header & Navigation */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition);
+  background: transparent;
+}
+header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--box-shadow);
+  padding: 12px 0;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.logo i { margin-right: 8px; font-size: 2rem; }
+.logo span {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 30px; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-color);
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: var(--transition);
+  position: relative;
+  padding: 5px 0;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; background: none; border: none; font-size: 1.5rem; color: var(--dark-color); cursor: pointer; }
+
+/* HERO SECTION */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px 60px;
+}
+
+.hero-bg-gradient {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+  radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+  radial-gradient(ellipse at 40% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+  animation: gradientMove 15s ease-in-out infinite; z-index: 0;
+}
+
+@keyframes gradientMove { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(3deg); } }
+
+.particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.particle { position: absolute; border-radius: 50%; animation: float 20s infinite ease-in-out; opacity: 0.6; }
+.particle:nth-child(1) { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.2)); top: 10%; left: 5%; animation-duration: 25s; }
+.particle:nth-child(2) { width: 60px; height: 60px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(236, 72, 153, 0.15)); top: 60%; right: 8%; animation-duration: 22s; }
+.particle:nth-child(3) { width: 100px; height: 100px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.15)); bottom: 15%; left: 10%; animation-duration: 28s; }
+.particle:nth-child(4) { width: 50px; height: 50px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(99, 102, 241, 0.2)); top: 25%; right: 15%; animation-duration: 20s; }
+.particle:nth-child(5) { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.15)); bottom: 30%; right: 25%; animation-duration: 24s; }
+
+@keyframes float { 0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); } 25% { transform: translate(30px, -30px) rotate(90deg) scale(1.1); } 50% { transform: translate(-20px, -50px) rotate(180deg) scale(1); } 75% { transform: translate(-40px, -20px) rotate(270deg) scale(0.9); } }
+
+.hero-lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; }
+.hero-line { position: absolute; background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent); height: 1px; width: 100%; animation: lineMove 8s linear infinite; }
+.hero-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+.hero-line:nth-child(2) { top: 40%; animation-delay: 2s; }
+.hero-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+.hero-line:nth-child(4) { top: 80%; animation-delay: 6s; }
+
+@keyframes lineMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+.hero-content { position: relative; z-index: 10; text-align: center; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hero-subtitle { display: inline-block; font-size: 1.1rem; font-weight: 500; color: var(--primary-color); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; padding: 8px 24px; background: rgba(99, 102, 241, 0.1); border-radius: 50px; animation: fadeInUp 0.8s ease-out; }
+.hero h1 { font-size: 4rem; margin-bottom: 25px; line-height: 1.2; color: var(--dark-color); animation: fadeInUp 0.8s ease-out 0.2s both; }
+.hero h1 .name-highlight { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color)); -webkit-background-clip: text; background-clip: text; color: transparent; position: relative; display: inline; }
+.hero h1 .typing-wrapper { display: inline-block; overflow: hidden; }
+.hero h1 .typing-text { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid var(--primary-color); animation: typing 3.5s steps(20, end), blink-caret 0.75s step-end infinite; }
+
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--primary-color); } }
+
+.hero-description { font-size: 1.5rem; color: var(--gray-color); margin-bottom: 40px; font-weight: 400; animation: fadeInUp 0.8s ease-out 0.4s both; }
+.hero-description .highlight { color: var(--secondary-color); font-weight: 600; }
+.btn-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; animation: fadeInUp 0.8s ease-out 0.6s both; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none;
+  font-weight: 600; font-size: 1rem; transition: var(--transition); border: none;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35); min-width: 180px;
+  position: relative; overflow: hidden;
+}
+.btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: 0.5s; }
+.btn:hover::before { left: 100%; }
+.btn:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); }
+
+.btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); box-shadow: none; }
+.btn-outline:hover { background: var(--primary-color); color: white; box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4); }
+.btn i { font-size: 1rem; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite; }
+.scroll-indicator a { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--gray-color); font-size: 0.85rem; transition: var(--transition); }
+.scroll-indicator a:hover { color: var(--primary-color); }
+.scroll-indicator i { font-size: 1.5rem; margin-top: 5px; }
+
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+
+/* About Section */
+.about-content { display: flex; align-items: center; gap: 60px; }
+.about-text { flex: 1; }
+.about-text h3 { font-size: 2.2rem; margin-bottom: 20px; color: var(--dark-color); }
+.about-text p { margin-bottom: 20px; color: var(--gray-color); }
+.about-image { flex: 1; display: flex; justify-content: center; position: relative; }
+
+/* PERUBAHAN UKURAN FOTO: max-width dikurangi dari 450px menjadi 300px */
+.about-image img { 
+  width: 100%; 
+  max-width: 300px; 
+  border-radius: var(--border-radius); 
+  box-shadow: var(--box-shadow); 
+  border: 10px solid white; 
+  object-fit: cover; 
+  transition: var(--transition); 
+}
+.about-image img:hover { transform: scale(1.02); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); }
+
+/* Skills Section */
+.skills-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.skill-item { background: white; border-radius: var(--border-radius); padding: 25px; box-shadow: var(--box-shadow); transition: var(--transition); border-left: 4px solid var(--primary-color); display: flex; align-items: center; gap: 15px; cursor: pointer; }
+.skill-item:hover { transform: translateX(8px) scale(1.02); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15); border-left-color: var(--accent-color); }
+.skill-icon { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1)); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: 1.4rem; flex-shrink: 0; transition: var(--transition); }
+.skill-item:hover .skill-icon { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; transform: rotate(10deg); }
+.skill-name { font-weight: 600; font-size: 1.2rem; color: var(--dark-color); }
+
+/* Portfolio Section */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.portfolio-item { background: white; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--box-shadow); transition: var(--transition); cursor: pointer; }
+.portfolio-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18); }
+.portfolio-img-wrapper { width: 100%; height: 220px; overflow: hidden; }
+.portfolio-img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+.portfolio-item:hover .portfolio-img { transform: scale(1.1); }
+.portfolio-info { padding: 20px; text-align: center; }
+.portfolio-info h3 { color: var(--dark-color); font-size: 1.3rem; margin-bottom: 8px; }
+.portfolio-info p { color: var(--gray-color); font-size: 0.95rem; }
+
+/* Experience Section */
+.timeline { position: relative; max-width: 800px; margin: 40px auto 0; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; width: 3px; background: linear-gradient(180deg, var(--primary-color), var(--secondary-color)); top: 0; bottom: 0; left: 9px; border-radius: 2px; }
+.timeline-item { position: relative; margin-bottom: 35px; padding-left: 45px; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
+.timeline-item.visible { opacity: 1; transform: translateX(0); }
+.timeline-item::before { content: ''; position: absolute; width: 20px; height: 20px; background: var(--primary-color); border-radius: 50%; left: -4px; top: 8px; border: 4px solid white; box-shadow: 0 0 0 3px var(--primary-color); z-index: 1; transition: var(--transition); }
+.timeline-item:hover::before { transform: scale(1.2); box-shadow: 0 0 0 5px var(--primary-color); }
+.timeline-content { background: white; border-radius: var(--border-radius); padding: 25px; box-shadow: var(--box-shadow); position: relative; transition: var(--transition); border-left: 4px solid var(--primary-color); }
+.timeline-content:hover { transform: translateX(8px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12); }
+.timeline-content h3 { font-size: 1.7rem; margin-bottom: 8px; color: var(--dark-color); }
+.timeline-content .date { font-weight: 600; color: var(--accent-color); margin-bottom: 10px; display: block; font-size: 1.1rem; }
+.timeline-content .company { font-weight: 600; color: var(--secondary-color); margin-bottom: 12px; display: block; font-size: 1.15rem; }
+.timeline-content ul { padding-left: 20px; margin-top: 8px; color: var(--gray-color); font-size: 0.95rem; }
+.timeline-content li { margin-bottom: 6px; line-height: 1.5; }
+
+/* Education Section */
+.education .timeline::before { background: linear-gradient(180deg, var(--accent-color), var(--secondary-color)); }
+.education .timeline-item::before { background: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-color); }
+.education .timeline-content { border-left: 4px solid var(--accent-color); }
+.education .timeline-content .date { color: var(--secondary-color); }
+.education .timeline-content .school { font-weight: 600; color: var(--primary-color); margin-bottom: 10px; display: block; font-size: 1.15rem; }
+
+/* Contact Section */
+.contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+.contact-card { background: white; border-radius: var(--border-radius); padding: 35px 25px; box-shadow: var(--box-shadow); transition: var(--transition); text-align: center; border: 1px solid rgba(0, 0, 0, 0.05); position: relative; overflow: hidden; }
+.contact-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--primary-color); }
+.contact-card.whatsapp::before { background: linear-gradient(90deg, #25D366, #128C7E); }
+.contact-card.instagram::before { background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.contact-card.tiktok::before { background: linear-gradient(90deg, #00f2ea, #ff0050); }
+.contact-card.email::before { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); }
+.contact-card.location::before { background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); }
+.contact-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+.contact-icon-box { width: 70px; height: 70px; border-radius: 50%; background: rgba(99, 102, 241, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--primary-color); font-size: 2rem; transition: var(--transition); }
+.contact-card:hover .contact-icon-box { transform: scale(1.1) rotate(5deg); }
+.contact-card.whatsapp .contact-icon-box { background: rgba(37, 211, 102, 0.15); color: #25D366; }
+.contact-card.instagram .contact-icon-box { background: rgba(228, 74, 118, 0.15); color: #e44a76; }
+.contact-card.tiktok .contact-icon-box { background: rgba(0, 0, 0, 0.05); color: #000000; }
+.contact-card.email .contact-icon-box { background: rgba(99, 102, 241, 0.15); color: var(--primary-color); }
+.contact-card.location .contact-icon-box { background: rgba(236, 72, 153, 0.15); color: var(--accent-color); }
+.contact-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark-color); }
+.contact-info { color: var(--gray-color); margin-bottom: 20px; line-height: 1.7; font-size: 0.95rem; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-links a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--primary-color); text-decoration: none; font-weight: 500; transition: var(--transition); padding: 10px; border-radius: 8px; background: rgba(99, 102, 241, 0.05); }
+.contact-card.whatsapp .contact-links a { color: #25D366; background: rgba(37, 211, 102, 0.08); }
+.contact-card.instagram .contact-links a { color: #e44a76; background: rgba(228, 74, 118, 0.08); }
+.contact-card.tiktok .contact-links a { color: #000000; background: rgba(0, 0, 0, 0.05); }
+.contact-links a:hover { background: var(--primary-color); color: white; transform: scale(1.05); }
+.contact-card.whatsapp .contact-links a:hover { background: #25D366; }
+.contact-card.instagram .contact-links a:hover { background: linear-gradient(90deg, #e6683c, #dc2743); }
+.contact-card.tiktok .contact-links a:hover { background: #000000; }
+
+/* Contact Form */
+.contact-form { margin-top: 50px; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+.contact-form .form-group { margin-bottom: 22px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 10px; font-family: 'Roboto', sans-serif; font-size: 1rem; transition: var(--transition); background: #f8fafc; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); background: white; }
+.contact-form textarea { min-height: 160px; resize: vertical; }
+.contact-form .btn { width: 100%; margin-top: 10px; padding: 18px; font-size: 1.1rem; border-radius: 10px; cursor: pointer; }
+
+/* Footer */
+footer { background: linear-gradient(135deg, var(--dark-color), #0f172a); color: rgba(255, 255, 255, 0.85); padding: 70px 0 20px; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+.footer-col h3 { color: white; font-size: 1.6rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+.footer-col h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); border-radius: 2px; }
+.footer-col p { margin: 15px 0; line-height: 1.7; }
+.footer-links { list-style: none; margin-top: 20px; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: inline-block; padding: 5px 0; }
+.footer-links a:hover { color: var(--primary-color); transform: translateX(5px); }
+.social-links { display: flex; gap: 15px; margin-top: 25px; }
+.social-links a { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); color: white; transition: var(--transition); font-size: 1.1rem; }
+.social-links a:hover { background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); transform: translateY(-5px) rotate(10deg); }
+.copyright { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.95rem; color: rgba(255, 255, 255, 0.6); }
+
+/* Responsive */
+@media (max-width: 992px) { .hero h1 { font-size: 3.5rem; } .hero-description { font-size: 1.3rem; } }
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links { position: fixed; top: 80px; right: -100%; width: 85%; height: calc(100vh - 80px); background: white; flex-direction: column; padding: 30px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); transition: var(--transition); z-index: 999; }
+  .nav-links.active { right: 0; }
+  .nav-links li { margin: 15px 0; }
+  .hero { min-height: 100vh; padding: 120px 20px 80px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-description { font-size: 1.2rem; }
+  .btn-container { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; }
+  .about-content { flex-direction: column; }
+  /* Ukuran foto responsive di mobile */
+  .about-image img { max-width: 280px; }
+  .timeline::before { left: 25px; }
+  .timeline-item { padding-left: 65px; }
+  .timeline-item::before { left: 15px; }
+  section { padding: 70px 0; }
+  .section-title h2 { font-size: 2.2rem; }
+  .contact-container { grid-template-columns: 1fr; }
+  .contact-form { padding: 30px 20px; }
+  .scroll-indicator { display: none; }
+}
+@media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } .hero-description { font-size: 1.1rem; } .section-title h2 { font-size: 1.9rem; } .particle { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+<div class="container">
+<nav>
+<a href="#" class="logo"><span>Nina Amelia Naziah</span></a>
+<button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+<ul class="nav-links" id="nav-links">
+<li><a href="#hero" class="active">Beranda</a></li>
+<li><a href="#about">Tentang Saya</a></li>
+<li><a href="#skills">Keahlian</a></li>
+<li><a href="#portfolio">Portofolio</a></li>
+<li><a href="#experience">Pengalaman</a></li>
+<li><a href="#education">Pendidikan</a></li>
+<li><a href="#contact">Kontak</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+<div class="hero-bg-gradient"></div>
+<div class="particles"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
+<div class="hero-lines"><div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div></div>
+
+<div class="hero-content">
+<span class="hero-subtitle">Selamat Datang</span>
+<h1>Halo, Saya <span class="typing-wrapper"><span class="typing-text">Nina Amelia Naziah</span></span></h1>
+<p class="hero-description">Siswi <span class="highlight">Teknik Komputer dan Jaringan</span> di SMKN 1 Tanjunganom</p>
+<div class="btn-container">
+<a href="cv nina.jpg" class="btn" download><i class="fas fa-download"></i> Download CV</a>
+<a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Hubungi Saya</a>
+</div>
+</div>
+
+<div class="scroll-indicator"><a href="#about"><span>Scroll</span><i class="fas fa-chevron-down"></i></a></div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+<div class="container">
+<div class="section-title"><h2>Tentang Saya</h2></div>
+<div class="about-content">
+<div class="about-text">
+<h3>Nina Amelia Naziah</h3>
+<p>Saya adalah siswi kelas XII di SMKN 1 Tanjunganom jurusan Teknik Komputer dan Jaringan. Memiliki ketertarikan besar pada jaringan komputer, pengembangan web, dan teknologi informasi.</p>
+<p>Saya memiliki kepribadian tenang dan fokus dalam bekerja, namun tetap dapat bersikap ramah dan ceria saat berinteraksi. Mampu bekerja dalam tim, disiplin, bertanggung jawab, dan siap belajar serta mengembangkan kemampuan di dunia kerja.</p>
+<p>Melalui portofolio ini, saya menampilkan beberapa pengalaman dan keterampilan yang telah saya pelajari selama masa pendidikan.</p>
+<a href="#contact" class="btn" style="margin-top: 20px;">Hubungi Saya</a>
+</div>
+<div class="about-image">
+<img src="profil.jpg" alt="Nina Amelia Naziah">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+<div class="container">
+<div class="section-title"><h2>Keahlian Saya</h2><p>Keterampilan teknis yang saya kuasai</p></div>
+<div class="skills-container">
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-wifi"></i></div><div class="skill-name">Konfigurasi WiFi / Access Point</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-globe"></i></div><div class="skill-name">Pengelolaan Web Sederhana</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-code"></i></div><div class="skill-name">Pemrograman Dasar</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-project-diagram"></i></div><div class="skill-name">Penyambungan Fiber Optik (Splicing Dasar)</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-server"></i></div><div class="skill-name">Setting Mikrotik Dasar</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-desktop"></i></div><div class="skill-name">Install Sistem Operasi Server</div></div>
+<div class="skill-item"><div class="skill-icon"><i class="fas fa-ethernet"></i></div><div class="skill-name">Membuat Kabel Jaringan (Crimping)</div></div>
+</div>
+</div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+<div class="container">
+<div class="section-title"><h2>Portofolio / Karya</h2><p>Beberapa proyek yang pernah saya kerjakan</p></div>
+<div class="portfolio-grid">
+<div class="portfolio-item">
+<div class="portfolio-img-wrapper"><img src="moodle.jpg" alt="Instalasi Moodle" class="portfolio-img"></div>
+<div class="portfolio-info"><h3>Instalasi Moodle</h3></div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img-wrapper"><img src="nginxx.jpg" alt="Instalasi Web Server" class="portfolio-img"></div>
+<div class="portfolio-info"><h3>Instalasi Web Server</h3></div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img-wrapper"><img src="voucher.jpg" alt="Voucher Hotspot" class="portfolio-img"></div>
+<div class="portfolio-info"><h3>Pembuatan Voucher Mikmon</h3></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+<div class="container">
+<div class="section-title"><h2>Pengalaman</h2><p>Praktik Kerja Lapangan & Organisasi</p></div>
+<div class="timeline">
+
+<!-- Pengalaman 1: PKL -->
+<div class="timeline-item">
+<div class="timeline-content">
+<span class="date">2025</span>
+<span class="company">CV. Berkah Inti Akses</span>
+<h3>Praktik Kerja Lapangan</h3>
+<ul>
+<li>Konfigurasi Mikrotik untuk jaringan internet</li>
+<li>Splicing Fiber Optik untuk instalasi jaringan</li>
+<li>Crimping kabel UTP untuk koneksi jaringan</li>
+<li>Membantu admin menginput data pelanggan</li>
+<li>Membuat voucher hotspot untuk pelanggan</li>
+</ul>
+</div>
+</div>
+
+<!-- Pengalaman 2: KKR (BARU DITAMBAHKAN) -->
+<div class="timeline-item">
+<div class="timeline-content">
+<span class="date">2023 - 2025</span>
+<span class="company">KKR Sekolah</span>
+<h3>Anggota KKR</h3>
+<ul>
+<li>Aktif dalam kegiatan kesehatan di sekolah</li>
+<li>Sosialisasi kesehatan</li>
+<li>Bertanggung jawab dalam membantu kegiatan UKS</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education">
+<div class="container">
+<div class="section-title"><h2>Pendidikan</h2><p>Riwayat pendidikan formal saya</p></div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-content"><span class="date">2023 - 2026</span><span class="school">SMKN 1 Tanjunganom</span><h3>Teknik Komputer dan Jaringan</h3></div>
+</div>
+<div class="timeline-item">
+<div class="timeline-content"><span class="date">2020 - 2023</span><span class="school">SMPN 1 Prambon</span><h3>Sekolah Menengah Pertama</h3></div>
+</div>
+<div class="timeline-item">
+<div class="timeline-content"><span class="date">2014 - 2020</span><span class="school">SDN 7 Sugihwaras</span><h3>Sekolah Dasar</h3></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+<div class="container">
+<div class="section-title"><h2>Kontak</h2><p>Hubungi saya melalui platform berikut</p></div>
+<div class="contact-container">
+
+<div class="contact-card whatsapp">
+<div class="contact-icon-box"><i class="fab fa-whatsapp"></i></div>
+<h3>WhatsApp</h3>
+<div class="contact-info">Langsung chat via WhatsApp untuk komunikasi lebih cepat</div>
+<div class="contact-links"><a href="https://wa.me/6281232022557" target="_blank"><i class="fas fa-phone"></i> +62 812-3202-2557</a></div>
+</div>
+
+<div class="contact-card instagram">
+<div class="contact-icon-box"><i class="fab fa-instagram"></i></div>
+<h3>Instagram</h3>
+<div class="contact-info">Follow Instagram untuk melihat update portofolio dan kegiatan</div>
+<div class="contact-links"><a href="https://www.instagram.com/nna_meliaa" target="_blank"><i class="fas fa-user"></i> @nna_meliaa</a></div>
+</div>
+
+<div class="contact-card tiktok">
+<div class="contact-icon-box"><i class="fab fa-tiktok"></i></div>
+<h3>TikTok</h3>
+<div class="contact-info">Follow TikTok untuk melihat video kreatif dan konten menarik</div>
+<div class="contact-links"><a href="https://www.tiktok.com/@nnamellli" target="_blank"><i class="fas fa-music"></i> tiktok.com/@nnamellli</a></div>
+</div>
+
+<div class="contact-card email">
+<div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+<h3>Email</h3>
+<div class="contact-info">Kirim email untuk pertanyaan formal atau penawaran proyek</div>
+<div class="contact-links"><a href="mailto:ninamelia026@gmail.com"><i class="fas fa-envelope"></i> ninamelia026@gmail.com</a></div>
+</div>
+
+<div class="contact-card location">
+<div class="contact-icon-box"><i class="fas fa-map-marker-alt"></i></div>
+<h3>Alamat</h3>
+<div class="contact-info">Jalan Klebet, RT.003/RW.010, Dsn. Dukuh, Sugih Waras, Prambon</div>
+<div class="contact-links"><a href="https://maps.app.goo.gl/4dntxSBchpNryfgU9" target="_blank"><i class="fas fa-map-marked-alt"></i> Lihat di Google Maps</a></div>
+</div>
+
+</div>
+
+<!-- Form Kontak WhatsApp -->
+<div class="contact-form">
+<form id="contactForm">
+<div class="form-group"><input type="text" id="nama" placeholder="Nama Lengkap" required></div>
+<div class="form-group"><input type="email" id="email" placeholder="Email" required></div>
+<div class="form-group"><input type="text" id="subjek" placeholder="Subjek"></div>
+<div class="form-group"><textarea id="pesan" placeholder="Pesan Anda" required></textarea></div>
+<button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Kirim via WhatsApp</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-container">
+<div class="footer-col">
+<h3>Nina Amelia Naziah</h3>
+<p>Siswi SMKN 1 Tanjunganom jurusan Teknik Komputer dan Jaringan. Siap belajar dan berkembang di bidang teknologi informasi.</p>
+<div class="social-links">
+<a href="https://www.instagram.com/nna_meliaa" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/6281232022557" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.tiktok.com/@nnamellli" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="mailto:ninamelia026@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h3>Tautan Penting</h3>
+<ul class="footer-links">
+<li><a href="#hero">Beranda</a></li><li><a href="#about">Tentang Saya</a></li><li><a href="#skills">Keahlian</a></li>
+<li><a href="#portfolio">Portofolio</a></li><li><a href="#experience">Pengalaman</a></li><li><a href="#education">Pendidikan</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Layanan</h3>
+<ul class="footer-links">
+<li><a href="#">Pembuatan Website Sederhana</a></li><li><a href="#">Konfigurasi Jaringan</a></li>
+<li><a href="#">Desain Grafis</a></li><li><a href="#">Konsultasi IT</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Informasi Kontak</h3>
+<ul class="footer-links">
+<li><i class="fas fa-map-marker-alt"></i> Jl. Klebet, Sugihwaras, Prambon</li>
+<li><i class="fas fa-envelope"></i> ninamelia026@gmail.com</li>
+<li><i class="fab fa-whatsapp"></i> +62 812-3202-2557</li>
+<li><i class="fab fa-instagram"></i> @nna_meliaa</li>
+</ul>
+</div>
+</div>
+<div class="copyright"><p>&copy; 2026 Nina Amelia Naziah</p></div>
+</div>
+</footer>
+
+<script>
+// Mobile Navigation
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; });
+document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); });
+
+// Header Scroll
+window.addEventListener('scroll', () => { const header = document.querySelector('header'); if (window.scrollY > 100) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); } });
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const targetId = this.getAttribute('href'); if(targetId === '#') return; const targetElement = document.querySelector(targetId); if(targetElement) { window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' }); } }); });
+
+// Form WhatsApp
+const contactForm = document.getElementById('contactForm');
+if(contactForm) {
+contactForm.addEventListener('submit', (e) => {
+e.preventDefault();
+const nama = document.getElementById('nama').value;
+const email = document.getElementById('email').value;
+const subjek = document.getElementById('subjek').value;
+const pesan = document.getElementById('pesan').value;
+const nomorWhatsApp = '6281232022557';
+const textPesan = `Halo, saya ingin menghubungi Anda dari Website Portofolio.%0A%0A*Nama:* ${nama}%0A*Email:* ${email}%0A*Subjek:* ${subjek}%0A*Pesan:*%0A${pesan}`;
+const urlWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${textPesan}`;
+window.open(urlWhatsApp, '_blank');
+contactForm.reset();
+});
+}
+
+// Active Nav Link on Scroll
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => { let current = ''; sections.forEach(section => { const sectionTop = section.offsetTop - 150; if(pageYOffset >= sectionTop) { current = section.getAttribute('id'); } }); navItems.forEach(item => { item.classList.remove('active'); if(item.getAttribute('href').slice(1) === current) { item.classList.add('active'); } }); });
+
+// Load
+document.addEventListener('DOMContentLoaded', () => {
+navItems[0].classList.add('active');
+window.addEventListener('resize', () => { if(window.innerWidth > 768 && navLinks.classList.contains('active')) { navLinks.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; } });
+
+// Timeline Animation
+const timelineItems = document.querySelectorAll('.timeline-item');
+const observerOptions = { threshold: 0.3, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, observerOptions);
+timelineItems.forEach(item => { observer.observe(item); });
+
+// Skill Hover
+const skillItems = document.querySelectorAll('.skill-item');
+skillItems.forEach(item => {
+item.addEventListener('mouseenter', () => { item.style.transform = 'translateX(8px) scale(1.02)'; });
+item.addEventListener('mouseleave', () => { item.style.transform = ''; });
+});
+});
+</script>
+</body>
+</html>
